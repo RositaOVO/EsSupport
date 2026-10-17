@@ -1,0 +1,1 @@
+{"required": true, "minVersion": "0.8", "package": "org.essupport.mixin", "compatibilityLevel": "JAVA_17", "mixins": ["SupplyTransferMixin"], "injectors": {"defaultRequire": 1}}

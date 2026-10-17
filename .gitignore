@@ -1,0 +1,9 @@
+.gradle/
+**/build/
+**/run/
+libs/
+local.properties
+.idea/
+*.log
+/tools/
+/DESIGN_STATUS.md

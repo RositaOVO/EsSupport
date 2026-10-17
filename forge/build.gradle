@@ -1,0 +1,19 @@
+plugins { id 'net.minecraftforge.gradle' version '6.0.54' }
+base { archivesName = 'essupport-forge-1.20.1' }
+minecraft { mappings channel:'official', version:'1.20.1' }
+repositories { maven { url='https://maven.sighs.cc/repository/maven-public/' };maven { url='https://repo.spongepowered.org/repository/maven-public/' };flatDir { dirs rootProject.file('libs') } }
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.13'
+    implementation project(':core')
+    compileOnly fg.deobf('local:espetro:local')
+    compileOnly fg.deobf('local:esradial:local')
+    implementation fg.deobf('com.sighs:ApricityUI-forge-1.20.1:1.2.6')
+    compileOnly 'org.spongepowered:mixin:0.8.5'
+}
+jar {
+    from rootProject.file('LICENSE')
+    from project(':core').sourceSets.main.output
+    manifest { attributes('MixinConfigs':'essupport.mixins.json') }
+    finalizedBy 'reobfJar'
+}
+processResources { inputs.property 'version',project.version; filesMatching('META-INF/mods.toml') { expand version:project.version } }
